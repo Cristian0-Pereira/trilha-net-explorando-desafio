@@ -6,16 +6,16 @@ public class Pessoa
 
     public Pessoa(string nome)
     {
-        Nome = nome;
+        Nome = !string.IsNullOrWhiteSpace(nome) ? nome: throw new ArgumentException("Nome não pode ser vazio.");
     }
 
     public Pessoa(string nome, string sobrenome)
     {
-        Nome = nome;
-        Sobrenome = sobrenome;
+        Nome = !string.IsNullOrWhiteSpace(nome) ? nome: throw new ArgumentException("Nome não pode ser vazio.");
+        Sobrenome = !string.IsNullOrWhiteSpace(sobrenome) ? sobrenome : string.Empty; // Opcional
     }
 
-    public string Nome { get; set; }
-    public string Sobrenome { get; set; }
-    public string NomeCompleto => $"{Nome} {Sobrenome}".ToUpper();
+    public string Nome { get;}
+    public string Sobrenome { get;}
+    public string NomeCompleto => string.IsNullOrWhiteSpace(Sobrenome) ? Nome.ToUpper() : $"{Nome} {Sobrenome}".ToUpper();
 }
