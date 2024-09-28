@@ -31,6 +31,7 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarSuite(Suite suite)
         {
+            // Validação para garantir que uma suíte válida está sendo cadastrada
             Suite = suite ?? throw new ArgumentNullException(nameof(suite), "A suíte não pode ser nula.");
         }
 
